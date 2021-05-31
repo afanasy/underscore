@@ -1,6 +1,5 @@
 import isBoolean from './isBoolean.js';
-import isString from './isString.js';
-import isArray from './isArray.js';
+import isFunction from './isFunction.js';
 import cb from './_cb.js';
 import getLength from './_getLength.js';
 import contains from './contains.js';
@@ -16,7 +15,7 @@ export default function uniq(array, isSorted, iteratee, context) {
     iteratee = isSorted;
     isSorted = false;
   }
-  var faster = isSorted && (!iteratee || isString(iteratee) || isArray(iteratee));
+  var faster = isSorted && (!iteratee || !isFunction(iteratee));
   if (iteratee != null) iteratee = cb(iteratee, context);
   var result = [];
   var seen = [];
